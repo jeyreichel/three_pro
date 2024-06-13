@@ -1,20 +1,23 @@
 import * as THREE from 'three';
 
-function _classPrivateFieldLooseBase(e, t) {
-  if (!{}.hasOwnProperty.call(e, t)) throw new TypeError("attempted to use private field on non-instance");
-  return e;
-}
 var id = 0;
-function _classPrivateFieldLooseKey(e) {
-  return "__private_" + id++ + "_" + e;
+function _classPrivateFieldLooseKey(name) {
+  return "__private_" + id++ + "_" + name;
+}
+function _classPrivateFieldLooseBase(receiver, privateKey) {
+  if (!Object.prototype.hasOwnProperty.call(receiver, privateKey)) {
+    throw new TypeError("attempted to use private field on non-instance");
+  }
+  return receiver;
 }
 
-function monkeyPatch(shader, {
-  defines = '',
-  header = '',
-  main = '',
-  ...replaces
-}) {
+function monkeyPatch(shader, _ref) {
+  let {
+    defines = '',
+    header = '',
+    main = '',
+    ...replaces
+  } = _ref;
   let patchedShader = shader;
   const replaceAll = (str, find, rep) => str.split(find).join(rep);
   Object.keys(replaces).forEach(key => {
@@ -118,15 +121,16 @@ class ProjectedMaterial extends THREE.MeshPhysicalMaterial {
     _classPrivateFieldLooseBase(this, _cover)[_cover] = cover;
     _classPrivateFieldLooseBase(this, _saveDimensions)[_saveDimensions]();
   }
-  constructor({
-    camera = new THREE.PerspectiveCamera(),
-    texture = new THREE.Texture(),
-    textureScale = 1,
-    textureOffset = new THREE.Vector2(),
-    backgroundOpacity = 1,
-    cover = false,
-    ...options
-  } = {}) {
+  constructor(_temp) {
+    let {
+      camera = new THREE.PerspectiveCamera(),
+      texture = new THREE.Texture(),
+      textureScale = 1,
+      textureOffset = new THREE.Vector2(),
+      backgroundOpacity = 1,
+      cover = false,
+      ...options
+    } = _temp === void 0 ? {} : _temp;
     if (!texture.isTexture) {
       throw new Error('Invalid texture passed to the ProjectedMaterial');
     }
@@ -370,9 +374,10 @@ class ProjectedMaterial extends THREE.MeshPhysicalMaterial {
     // persist also the current camera position and matrices
     _classPrivateFieldLooseBase(this, _saveCameraMatrices)[_saveCameraMatrices]();
   }
-  projectInstanceAt(index, instancedMesh, matrixWorld, {
-    forceCameraSave = false
-  } = {}) {
+  projectInstanceAt(index, instancedMesh, matrixWorld, _temp2) {
+    let {
+      forceCameraSave = false
+    } = _temp2 === void 0 ? {} : _temp2;
     if (!instancedMesh.isInstancedMesh) {
       throw new Error(`The provided mesh is not an InstancedMesh`);
     }

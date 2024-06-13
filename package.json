@@ -19,7 +19,8 @@
   "scripts": {
     "start": "vite",
     "build": "rollup -c",
-    "build-examples": "vite build"
+    "build-examples": "vite build",
+    "serve": "vite preview"
   },
   "peerDependencies": {
     "three": "*"

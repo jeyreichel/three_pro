@@ -14,7 +14,7 @@
   "author": "Marco Fugaro <marco.fugaro@gmail.com>",
   "license": "MIT",
   "files": [
-    "build/"
+    "dist/"
   ],
   "scripts": {
     "start": "vite",
@@ -37,6 +37,9 @@
     "rollup": "^3.17.2",
     "stats.js": "^0.17.0",
     "three": "0.149.0",
-    "vite": "^4.1.4"
+    "vite": "^4.5.3"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "^4.3.1"
   }
 }

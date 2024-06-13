@@ -32,11 +32,11 @@ export default [
     output: [
       {
         format: 'cjs',
-        file: 'build/ProjectedMaterial.cjs.js',
+        file: 'dist/ProjectedMaterial.cjs.js',
       },
       {
         format: 'esm',
-        file: 'build/ProjectedMaterial.module.js',
+        file: 'dist/ProjectedMaterial.module.js',
       },
     ],
   },

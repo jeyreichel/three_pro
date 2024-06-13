@@ -20,7 +20,7 @@
     "start": "vite",
     "build": "rollup -c",
     "build-examples": "vite build",
-    "serve": "vite preview"
+    "serve": "viet preview"
   },
   "peerDependencies": {
     "three": "*"

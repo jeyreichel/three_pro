@@ -10,12 +10,11 @@ const examples = dirContents
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  root: '',
+  root: './examples',
   server: {
-    open: true,
+    host: true,
   },
   build: {
-    outDir: 'dist',
     target: 'esnext',
     rollupOptions: {
       input: {

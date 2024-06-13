@@ -15,6 +15,7 @@ export default defineConfig({
     host: true,
   },
   build: {
+    outDir: 'examples/dist',
     target: 'esnext',
     rollupOptions: {
       input: {

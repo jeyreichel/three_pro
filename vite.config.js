@@ -10,7 +10,7 @@ const examples = dirContents
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  root: './examples',
+  root: '',
   server: {
     host: true,
   },

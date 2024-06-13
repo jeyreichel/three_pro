@@ -1,12 +1,29 @@
+import { resolve } from 'path'
+import { readdir } from 'fs/promises'
 import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
 
+const dirContents = await readdir(resolve(__dirname, './examples'))
+const examples = dirContents
+  .filter((f) => f.endsWith('.html'))
+  .filter((f) => f !== 'index.html')
+  .map((f) => f.slice(0, -'.html'.length))
+
+// https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
-  build: {
-    outDir: 'dist',
-  },
+  root: './examples',
   server: {
-    open: true, // Automatically open the app in the browser on server start
+    host: true,
+  },
+  build: {
+    outDir: 'examples/dist',
+    target: 'esnext',
+    rollupOptions: {
+      input: {
+        main: resolve(__dirname, './examples/index.html'),
+        ...Object.fromEntries(
+          examples.map((example) => [example, resolve(__dirname, `./examples/${example}.html`)])
+        ),
+      },
+    },
   },
 })

@@ -12,9 +12,10 @@ const examples = dirContents
 export default defineConfig({
   root: '',
   server: {
-    host: true,
+    open: true,
   },
   build: {
+    outDir: 'dist',
     target: 'esnext',
     rollupOptions: {
       input: {
